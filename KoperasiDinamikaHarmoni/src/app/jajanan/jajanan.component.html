@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #jajananForm="ngForm" (ngSubmit)="onSubmit(jajananForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="jajananService.selectedJajanan._id">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="nama_jajanan" #name="ngModel" [(ngModel)]="jajananService.selectedJajanan.nama_jajanan" placeholder="Masukkan nama jajanan" required>
+                                    <label>Nama :
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="harga_beli" #name="ngModel" [(ngModel)]="jajananService.selectedJajanan.harga_beli" placeholder="Masukkan nominal harga beli jajanan">
+                                    <label>Harga Beli :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="harga_jual" #name="ngModel" [(ngModel)]="jajananService.selectedJajanan.harga_jual" placeholder="Masukkan nominal harga jual jajanan">
+                                    <label>Harga Jual :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="nama_pemasok" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.nama_pemasok" placeholder="Masukkan nama pemasok">
+                                    <label>Nama Pemasok :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="pabrik" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.pabrik" placeholder="Masukkan asal pabrik pemasok">
+                                    <label>Asal Pabrik Pemasok :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="nohp" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.nohp" placeholder="Masukkan nohp/kontak pemasok">
+                                    <label>No HP Pemasok :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button" (click)="resetForm(jajananForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit" [disabled]="!jajananForm.valid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <tr>
+                                <th>Nama</th>
+                                <th>Harga Beli</th>
+                                <th>Harga Jual</th>
+                                <th>Asal Stock</th>
+                                <th>Image</th>
+                            </tr>
+                            <tr *ngFor="let jajan of jajananService.jajanan">
+                                <td>{{ jajan.nama }}</td>
+                                <td>{{ jajan.harga_beli }}</td>
+                                <td>{{ jajan.harga_jual }}</td>
+                                <td>{{ jajan.asal_stock }}</td>
+                                <td>{{ jajan.image }}</td>
+                                <td>
+                                    <a class="action-btn" (click)="onEdit(jajan)">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a class="action-btn" (click)="onDelete(jajan._id, jajananForm)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
