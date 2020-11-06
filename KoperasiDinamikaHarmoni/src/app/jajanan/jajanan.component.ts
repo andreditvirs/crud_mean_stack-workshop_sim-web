@@ -3,8 +3,6 @@ import { NgForm } from '@angular/forms';
 
 import { JajananService } from '../shared/jajanan.service';
 import { Jajanan } from '../shared/jajanan.model';
-import { PemasokService } from '../shared/pemasok.service';
-import { Pemasok} from '../shared/pemasok.model';
 
 declare var M: any;
 
@@ -16,7 +14,7 @@ declare var M: any;
 })
 export class JajananComponent implements OnInit {
 
-  constructor(public jajananService: JajananService, public pemasokService: PemasokService) { }
+  constructor(public jajananService: JajananService) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -32,24 +30,14 @@ export class JajananComponent implements OnInit {
       harga_beli: null,
       harga_jual: null
     };
-    this.pemasokService.selectedPemasok = {
-      _id: "",
-      nama_pemasok: "",
-      pabrik: "",
-      nohp: null
-    };
   }
 
   onSubmit(form: NgForm){
     if(form.value._id == null || form.value._id == ""){
       this.jajananService.postJajanan(form.value).subscribe((res) => {
         this.resetForm(form);
-        M.toast({ html: 'Data Jajanan berhasil tersimpan', classes: 'rounded'});
-      });
-      this.pemasokService.postPemasok(form.value).subscribe((res) => {
-        this.resetForm(form);
         this.refreshJajananList();
-        M.toast({ html: 'Data Pemasok berhasil tersimpan', classes: 'rounded'});
+        M.toast({ html: 'Data Jajanan berhasil tersimpan', classes: 'rounded'});
       });
     }else{
       this.jajananService.putJajanan(form.value).subscribe((res) => {

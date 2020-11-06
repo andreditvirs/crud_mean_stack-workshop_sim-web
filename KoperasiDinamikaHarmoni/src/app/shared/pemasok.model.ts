@@ -1,6 +1,6 @@
 export class Pemasok {
     _id: string;
-    nama_pemasok: string;
+    nama: string;
     pabrik: string;
     nohp: number;
 }

@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JajananComponent } from './jajanan/jajanan.component';
+import { PemasokComponent } from './pemasok/pemasok.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JajananComponent
+    JajananComponent,
+    PemasokComponent
   ],
   imports: [
     BrowserModule,

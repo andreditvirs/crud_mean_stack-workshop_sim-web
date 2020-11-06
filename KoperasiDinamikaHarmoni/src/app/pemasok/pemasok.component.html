@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s12">
+                        <form #pemasokForm="ngForm" (ngSubmit)="onSubmit(pemasokForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="pemasokService.selectedJajanan._id">
+                            <div class="row">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="nama" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.nama" placeholder="Masukkan nama pemasok">
+                                    <label>Nama:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="pabrik" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.pabrik" placeholder="Masukkan asal pabrik pemasok">
+                                    <label>Asal Pabrik:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="nohp" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.nohp" placeholder="Masukkan nohp/kontak pemasok">
+                                    <label>No HP:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button" (click)="resetForm(pemasokForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit" [disabled]="!pemasokForm.valid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col s12">
+                        <table class="responsive-table highlight">
+                            <tr>
+                                <th>Nama Pemasok</th>
+                                <th>Asal Pabrik Pemasok</th>
+                                <th>No HP Pemasok</th>
+                                <th>Aksi</th>
+                            </tr>
+                            <tr *ngFor="let pemasok of pemasokService.pemasok">
+                                <td>{{ pemasok.nama }}</td>
+                                <td>{{ pemasok.pabrik }}</td>
+                                <td>{{ pemasok.nohp }}</td>
+                                <td>
+                                    <a class="action-btn" (click)="onEditPemasok(pemasok)">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a class="action-btn" (click)="onDeletePemasok(pemasok._id, pemasokForm)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
