@@ -8,7 +8,7 @@
                             <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="jajananService.selectedJajanan._id">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" name="nama_jajanan" #name="ngModel" [(ngModel)]="jajananService.selectedJajanan.nama_jajanan" placeholder="Masukkan nama jajanan" required>
+                                    <input type="text" name="nama" #name="ngModel" [(ngModel)]="jajananService.selectedJajanan.nama" placeholder="Masukkan nama jajanan" required>
                                     <label>Nama :
                                         <label class="red-text">*</label>
                                     </label>
@@ -28,6 +28,14 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <p>Dari Pemasok</p>
+                                    <select name="pemasok" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.nama" style="display: inline-block;">
+                                        <option *ngFor="let pemasok of pemasokService.pemasok" [ngValue]="pemasok">{{pemasok.nama}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
                                     <button class="btn btn-custom right" type="button" (click)="resetForm(jajananForm)">Reset</button>
                                     <button class="btn btn-custom right" type="submit" [disabled]="!jajananForm.valid">Submit</button>
                                 </div>
@@ -40,12 +48,14 @@
                                 <th>Nama</th>
                                 <th>Harga Beli</th>
                                 <th>Harga Jual</th>
+                                <th>Pemasok</th>
                                 <th>Aksi</th>
                             </tr>
                             <tr *ngFor="let jajan of jajananService.jajanan">
                                 <td style="padding-left: 10px">{{ jajan.nama }}</td>
                                 <td style="padding-left: 10px">{{ jajan.harga_beli }}</td>
                                 <td style="padding-left: 10px">{{ jajan.harga_jual }}</td>
+                                <td style="padding-left: 10px">{{ jajan.pemasok.nama }}</td>
                                 <td>
                                     <a class="action-btn" (click)="onEdit(jajan)">
                                         <i class="material-icons">edit</i>

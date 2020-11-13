@@ -23,11 +23,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) =>{
     var jajan = new Jajanan({
-        nama: req.body.nama_jajanan,
+        nama: req.body.nama,
         harga_beli: req.body.harga_beli,
         harga_jual: req.body.harga_jual,
-        asal_stock: req.body.asal_stock,
-        image: req.body.image
+        pemasok: req.body.pemasok
     });
     jajan.save((err, doc) => {
         if(!err){ res.send(doc); }
@@ -40,11 +39,10 @@ router.put('/:id', (req, res) => {
         return res.status(400).send(`Tidak ada data dengan id : ${req.params.id}`);
     
     var jajan = {
-        nama: req.body.nama_jajanan,
+        nama: req.body.nama,
         harga_beli: req.body.harga_beli,
         harga_jual: req.body.harga_jual,
-        asal_stock: req.body.asal_stock,
-        image: req.body.image
+        pemasok: req.body.pemasok
     };
     Jajanan.findByIdAndUpdate(req.params.id, { $set: jajan }, { new: true }, (err, doc) => {
         if(!err){ res.send(doc); }

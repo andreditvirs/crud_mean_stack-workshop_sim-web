@@ -5,8 +5,7 @@
                 <div class="row">
                     <div class="col s12">
                         <form #pemasokForm="ngForm" (ngSubmit)="onSubmit(pemasokForm)">
-                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="pemasokService.selectedJajanan._id">
-                            <div class="row">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="pemasokService.selectedPemasok._id">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input type="text" name="nama" #name="ngModel" [(ngModel)]="pemasokService.selectedPemasok.nama" placeholder="Masukkan nama pemasok">
@@ -46,10 +45,10 @@
                                 <td>{{ pemasok.pabrik }}</td>
                                 <td>{{ pemasok.nohp }}</td>
                                 <td>
-                                    <a class="action-btn" (click)="onEditPemasok(pemasok)">
+                                    <a class="action-btn" (click)="onEdit(pemasok)">
                                         <i class="material-icons">edit</i>
                                     </a>
-                                    <a class="action-btn" (click)="onDeletePemasok(pemasok._id, pemasokForm)">
+                                    <a class="action-btn" (click)="onDelete(pemasok._id, pemasokForm)">
                                         <i class="material-icons">delete</i>
                                     </a>
                                 </td>

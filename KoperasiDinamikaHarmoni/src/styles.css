@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 form div.input-field input{
     padding-left: 15px !important;
-    color: #25a297;
+    color:white;
+}
+
+form div.input-field label{
+    color:white;
+}
+
+form div.input-field p{
+    font-weight: bold;
+    padding-bottom: 10px;
+    color:white;
 }
 
 input.ng-invalid.ng-dirty{
@@ -23,7 +33,8 @@ input.ng-invalid.ng-dirty{
 }
 
 div.card{
-    background-color : black;
+    margin-top: 50px;
+    background-color : #ee6e73;
     border-radius: 10px;
 }
 

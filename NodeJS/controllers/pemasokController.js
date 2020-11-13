@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) =>{
     var pemasok = new Pemasok({
-        nama: req.body.nama_pemasok,
+        nama: req.body.nama,
         pabrik: req.body.pabrik,
         nohp: req.body.nohp
     });
@@ -38,7 +38,7 @@ router.put('/:id', (req, res) => {
         return res.status(400).send(`Tidak ada data dengan id : ${req.params.id}`);
     
     var pemasok = {
-        nama: req.body.nama_pemasok,
+        nama: req.body.nama,
         pabrik: req.body.pabrik,
         nohp: req.body.nohp
     };

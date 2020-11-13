@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 
 import { JajananService } from '../shared/jajanan.service';
 import { Jajanan } from '../shared/jajanan.model';
+import { PemasokService } from '../shared/pemasok.service';
+import { Pemasok } from '../shared/pemasok.model';
 
 declare var M: any;
 
@@ -10,11 +12,11 @@ declare var M: any;
   selector: 'app-jajanan',
   templateUrl: './jajanan.component.html',
   styleUrls: ['./jajanan.component.css'],
-  providers: [JajananService]
+  providers: [JajananService, PemasokService]
 })
 export class JajananComponent implements OnInit {
 
-  constructor(public jajananService: JajananService) { }
+  constructor(public jajananService: JajananService, public pemasokService: PemasokService) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -26,9 +28,16 @@ export class JajananComponent implements OnInit {
       form.reset();
     this.jajananService.selectedJajanan = {
       _id: "",
-      nama_jajanan: "",
+      nama: "",
       harga_beli: null,
-      harga_jual: null
+      harga_jual: null,
+      pemasok: null
+    };
+    this.pemasokService.selectedPemasok = {
+      _id: "",
+      nama: "",
+      nohp: null,
+      pabrik: ""
     };
   }
 
@@ -52,6 +61,9 @@ export class JajananComponent implements OnInit {
   refreshJajananList(){
     this.jajananService.getJajananList().subscribe((res) => {
       this.jajananService.jajanan = res as Jajanan[];
+    });
+    this.pemasokService.getPemasokList().subscribe((res) => {
+      this.pemasokService.pemasok = res as Pemasok[];
     });
   }
 
